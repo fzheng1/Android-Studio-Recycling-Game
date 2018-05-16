@@ -22,7 +22,7 @@ public abstract class GameObject {
     // graphics of the object
     public abstract void render();
 
-    // outline of object to test for overlap
+    // get outline of object's size to test for overlap
     public abstract Rectangle getBounds();
 
     public int getX() {
