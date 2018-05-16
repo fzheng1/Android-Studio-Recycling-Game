@@ -2,11 +2,13 @@ package com.strobertchs.enviro_game.Objects;
 
 import android.support.constraint.solver.widgets.Rectangle;
 
-public class Recyclabe extends GameObject {
+import com.strobertchs.enviro_game.Handler;
+
+public class Recyclable extends GameObject {
 
     Handler handler;
 
-    public Recyclabe(int x, int y, ID id, Handler handler) {
+    public Recyclable(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
     }
