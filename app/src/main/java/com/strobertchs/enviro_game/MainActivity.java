@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         Button playBtn = (Button) findViewById(R.id.playBtn);
         Button instructionBtn = (Button) findViewById(R.id.instructionBtn);
 
+        // make the play button take user to another screen (Activity 2)
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // make the instruction button take user to another screen (Activity 3)
         instructionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
