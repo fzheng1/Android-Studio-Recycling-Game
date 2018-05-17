@@ -16,10 +16,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button playBtn = (Button) findViewById(R.id.playBtn);
+        Button instructionBtn = (Button) findViewById(R.id.instructionBtn);
+
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(getApplicationContext(), SecondActivity.class);
+
+                startActivity(startIntent);
+            }
+        });
+
+        instructionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent((getApplicationContext(), ThirdActivity.class));
 
                 startActivity(startIntent);
             }
