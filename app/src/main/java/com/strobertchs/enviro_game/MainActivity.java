@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), SecondActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), Handler.class);
 
                 startActivity(startIntent);
             }
@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         instructionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), ThirdActivity.class);
+//                Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
 
-                startActivity(startIntent);
+//                startActivity(startIntent);
             }
         });
 
