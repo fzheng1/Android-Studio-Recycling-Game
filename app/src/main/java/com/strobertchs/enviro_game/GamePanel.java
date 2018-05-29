@@ -7,8 +7,8 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
 import com.strobertchs.enviro_game.Background.ConveyorBelt;
+
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     public static final int WIDTH = 1499;
