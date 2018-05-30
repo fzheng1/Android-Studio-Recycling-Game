@@ -5,11 +5,11 @@ import android.support.constraint.solver.widgets.Rectangle;
 
 import static com.strobertchs.enviro_game.MainThread.canvas;
 
-public class TrashBin extends GameObject {
+public class paperBin extends GameObject {
     private Bitmap image;
     private int x, y;
 
-    public TrashBin(int x, int y, ID id, Bitmap res) {
+    public paperBin(int x, int y, ID id, Bitmap res) {
         super(x, y, id);
         image = res;
     }
@@ -23,7 +23,7 @@ public class TrashBin extends GameObject {
     public void draw() {
         canvas.drawBitmap(image, x, 0, null);
         if(x<0){
-            canvas.drawBitmap(image, 100, 100, null);
+            canvas.drawBitmap(image, 300, 100, null);
         }
     }
 
