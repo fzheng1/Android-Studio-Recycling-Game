@@ -13,9 +13,9 @@ public class Handler {
     LinkedList<GameObject> gameObjects = new LinkedList<>();
 
     // run the tick methods of the gameobjects
-    public void tick(){
+    public void update(){
         for (GameObject tempobject: gameObjects) {
-            tempobject.tick();
+            tempobject.update();
         }
     }
 }

@@ -17,10 +17,10 @@ public abstract class GameObject {
     }
 
     // actions of the object each refresh
-    public abstract void tick();
+    public abstract void update();
 
     // graphics of the object
-    public abstract void render();
+    public abstract void draw();
 
     // get outline of object's size to test for overlap
     public abstract Rectangle getBounds();
