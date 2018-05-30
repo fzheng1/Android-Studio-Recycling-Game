@@ -7,6 +7,8 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import com.strobertchs.enviro_game.Background.Background;
 import com.strobertchs.enviro_game.Background.ConveyorBelt;
 
 
@@ -17,6 +19,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     private MainThread thread;
     private ConveyorBelt cb;
+    private Background bg;
 
     public GamePanel(Context context){
         super(context);
@@ -39,6 +42,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     @Override
     public void surfaceCreated(SurfaceHolder holder){
         // pass image from drawable into background
+        bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background));
         cb = new ConveyorBelt(BitmapFactory.decodeResource(getResources(), R.drawable.conveyer_belt));
         cb.setVector(-10);
 
@@ -82,8 +86,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
         if (canvas != null){
             final int savedState = canvas.save();
-            canvas.scale(scaleFactorX, 1);
+
+            bg.draw(canvas);
             cb.draw(canvas);
+
             canvas.restoreToCount(savedState);
         }
 
