@@ -16,38 +16,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //set full screen
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_main);
 
-        // extends surfaceview, where the game will be played
-        setContentView(new GamePanel(this));
-//
-//
-//        setContentView(R.layout.activity_main);
-//
-//        Button playBtn = (Button) findViewById(R.id.playBtn);
-//        Button instructionBtn = (Button) findViewById(R.id.instructionBtn);
-//
-//        // make the play button take user to another screen (Activity 2)
-//        playBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent startIntent = new Intent(getApplicationContext(), Handler.class);
-//
+        Button playBtn = (Button) findViewById(R.id.playBtn);
+        Button instructionBtn = (Button) findViewById(R.id.instructionBtn);
+
+        // make the play button take user to another screen (Activity 2)
+        playBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), Game.class);
+
+                startActivity(startIntent);
+            }
+        });
+
+        // make the instruction button take user to another screen (Activity 3)
+        instructionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
+
 //                startActivity(startIntent);
-//            }
-//        });
-//
-//        // make the instruction button take user to another screen (Activity 3)
-//        instructionBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
-//
-////                startActivity(startIntent);
-//            }
-//        });
+            }
+        });
 
     }
 }
