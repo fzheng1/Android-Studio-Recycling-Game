@@ -1,6 +1,7 @@
 package com.strobertchs.enviro_game.Objects;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.support.constraint.solver.widgets.Rectangle;
 
 import com.strobertchs.enviro_game.Handler;
@@ -11,17 +12,16 @@ public class Recyclable extends GameObject {
 
     Handler handler;
     private Bitmap image;
-    private int x,y,dx;
 
-    public Recyclable(int x, int y, ID id, Handler handler) {
+    public Recyclable(int x, int y, ID id, Bitmap res) {
         super(x, y, id);
-        this.handler = handler;
+        image = res;
     }
 
 
     @Override
     public void update() {
-        x += dx;
+        x += velX;
         if (x < -com.strobertchs.enviro_game.GamePanel.WIDTH){
              // TODO remove the object
         }
@@ -30,7 +30,7 @@ public class Recyclable extends GameObject {
     // TODO update override if the object is touched by player
 
     @Override
-    public void draw() {
+    public void draw(Canvas canvas) {
         canvas.drawBitmap(image, x, 0, null);
         if(x<0){
             canvas.drawBitmap(image, x + com.strobertchs.enviro_game.GamePanel.WIDTH, 950, null);
@@ -40,6 +40,7 @@ public class Recyclable extends GameObject {
 
     @Override
     public Rectangle getBounds() {
-        return null;
+        this.rectangle.setBounds(x, y, 200, 200);
+        return this.rectangle;
     }
 }

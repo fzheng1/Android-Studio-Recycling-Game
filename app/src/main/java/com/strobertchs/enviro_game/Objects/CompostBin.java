@@ -1,15 +1,15 @@
 package com.strobertchs.enviro_game.Objects;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.support.constraint.solver.widgets.Rectangle;
 
 import static com.strobertchs.enviro_game.MainThread.canvas;
 
-public class compostBin extends GameObject {
+public class CompostBin extends GameObject {
     private Bitmap image;
-    private int x, y;
 
-    public compostBin(int x, int y, ID id, Bitmap res) {
+    public CompostBin(int x, int y, ID id, Bitmap res) {
         super(x, y, id);
         image = res;
     }
@@ -20,15 +20,13 @@ public class compostBin extends GameObject {
     }
 
     @Override
-    public void draw() {
-        canvas.drawBitmap(image, x, 0, null);
-        if(x<0){
-            canvas.drawBitmap(image, 100, 300, null);
-        }
+    public void draw(Canvas canvas) {
+        canvas.drawBitmap(image, x, y, null);
     }
 
     @Override
     public Rectangle getBounds() {
-        return null;
+        this.rectangle.setBounds(x, y, 200, 200);
+        return this.rectangle;
     }
 }

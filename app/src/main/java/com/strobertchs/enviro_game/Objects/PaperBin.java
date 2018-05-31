@@ -1,15 +1,16 @@
 package com.strobertchs.enviro_game.Objects;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.support.constraint.solver.widgets.Rectangle;
 
 import static com.strobertchs.enviro_game.MainThread.canvas;
 
-public class paperBin extends GameObject {
+public class PaperBin extends GameObject {
     private Bitmap image;
-    private int x, y;
 
-    public paperBin(int x, int y, ID id, Bitmap res) {
+    public PaperBin(int x, int y, ID id, Bitmap res) {
         super(x, y, id);
         image = res;
     }
@@ -20,15 +21,13 @@ public class paperBin extends GameObject {
     }
 
     @Override
-    public void draw() {
-        canvas.drawBitmap(image, x, 0, null);
-        if(x<0){
-            canvas.drawBitmap(image, 300, 100, null);
-        }
+    public void draw(Canvas canvas) {
+        canvas.drawBitmap(image, x, y, null);
     }
 
     @Override
     public Rectangle getBounds() {
-        return null;
+        this.rectangle.setBounds(x, y, 200, 200);
+        return this.rectangle;
     }
 }

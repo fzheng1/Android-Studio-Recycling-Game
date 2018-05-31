@@ -8,8 +8,10 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.strobertchs.enviro_game.Background.Background;
-import com.strobertchs.enviro_game.Background.ConveyorBelt;
+import com.strobertchs.enviro_game.Background.*;
+import com.strobertchs.enviro_game.Objects.*;
+
+import java.util.Random;
 
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
@@ -20,6 +22,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     private MainThread thread;
     private ConveyorBelt cb;
     private Background bg;
+    private RecyclingBin recyclingBin;
+    private CompostBin compostBin;
+    private PaperBin paperBin;
+    private TrashBin trashBin;
+    private Recyclable recyclable;
+    private Random random;
 
     public GamePanel(Context context){
         super(context);
@@ -42,9 +50,20 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     @Override
     public void surfaceCreated(SurfaceHolder holder){
         // pass image from drawable into background
+
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background));
         cb = new ConveyorBelt(BitmapFactory.decodeResource(getResources(), R.drawable.conveyer_belt));
         cb.setVector(-10);
+
+        recyclingBin = new RecyclingBin(0, 750, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
+        trashBin = new TrashBin(0, 1050, ID.trashBin, BitmapFactory.decodeResource(getResources(), R.drawable.trash_bin));
+        compostBin = new CompostBin(250, 750, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
+        paperBin = new PaperBin(500, 750, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
+
+//        for (int i = 0; i < 5; i++) {
+//            int rand = random.nextInt(6);
+//
+//        }
 
         //safely start game loop
         thread.setRunning(true);
@@ -89,6 +108,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
             bg.draw(canvas);
             cb.draw(canvas);
+            recyclingBin.draw(canvas);
+            trashBin.draw(canvas);
+            compostBin.draw(canvas);
+            paperBin.draw(canvas);
 
             canvas.restoreToCount(savedState);
         }

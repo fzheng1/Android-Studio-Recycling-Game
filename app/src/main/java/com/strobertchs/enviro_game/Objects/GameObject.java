@@ -1,5 +1,6 @@
 package com.strobertchs.enviro_game.Objects;
 
+import android.graphics.Canvas;
 import android.support.constraint.solver.widgets.Rectangle;
 
 public abstract class GameObject {
@@ -10,17 +11,22 @@ public abstract class GameObject {
 
     protected ID id;
 
+    protected Rectangle rectangle = new Rectangle();
+
     public GameObject(int x, int y, ID id){
         this.x = x;
         this.y = y;
         this.id = id;
     }
 
+    protected GameObject() {
+    }
+
     // actions of the object each refresh
     public abstract void update();
 
     // graphics of the object
-    public abstract void draw();
+    public abstract void draw(Canvas canvas);
 
     // get outline of object's size to test for overlap
     public abstract Rectangle getBounds();

@@ -22,7 +22,7 @@ public class ConveyorBelt {
 
     public void draw(Canvas canvas){
         canvas.drawBitmap(image, x, 1100, null);
-        if(x<0){
+        if(x < 0){
             canvas.drawBitmap(image, x+ com.strobertchs.enviro_game.GamePanel.WIDTH, 1100, null);
         }
     }
