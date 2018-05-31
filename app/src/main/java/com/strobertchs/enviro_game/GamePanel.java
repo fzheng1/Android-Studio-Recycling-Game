@@ -110,6 +110,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     public void update(){
         cb.update();
 
+        // update game objects
+        handler.update();
+
     }
 
     @SuppressLint("MissingSuperCall")
@@ -123,6 +126,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
             bg.draw(canvas);
             cb.draw(canvas);
+
+            // draw the game objects
             handler.draw(canvas);
 
             canvas.restoreToCount(savedState);
