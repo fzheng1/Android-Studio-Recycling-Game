@@ -22,9 +22,6 @@ public class TrashBin extends GameObject {
     @Override
     public void draw(Canvas canvas) {
         canvas.drawBitmap(image, x, y, null);
-        if(x<0){
-            canvas.drawBitmap(image, 200, 600, null);
-        }
     }
 
     @Override

@@ -19,8 +19,6 @@ public abstract class GameObject {
         this.id = id;
     }
 
-    protected GameObject() {
-    }
 
     // actions of the object each refresh
     public abstract void update();

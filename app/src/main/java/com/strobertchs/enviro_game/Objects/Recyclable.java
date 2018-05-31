@@ -33,7 +33,7 @@ public class Recyclable extends GameObject {
     public void draw(Canvas canvas) {
         canvas.drawBitmap(image, x, 0, null);
         if(x<0){
-            canvas.drawBitmap(image, x + com.strobertchs.enviro_game.GamePanel.WIDTH, 950, null);
+            // TODO Object is destroyed
         }
 
     }
