@@ -6,9 +6,11 @@ enum ID {
     recyclable(),
     garbage(),
     compost(),
+    paper(),
     recycleBin(),
     compostBin(),
-    trashBin()
+    trashBin(),
+    paperBin()
 
 
 }
