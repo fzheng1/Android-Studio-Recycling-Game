@@ -1,5 +1,7 @@
 package com.strobertchs.enviro_game;
 
+import android.graphics.Canvas;
+
 import com.strobertchs.enviro_game.Objects.GameObject;
 
 import java.util.LinkedList;
@@ -18,4 +20,21 @@ public class Handler {
             tempobject.update();
         }
     }
+
+    public void draw(Canvas canvas){
+        for (GameObject tempobject: gameObjects){
+            tempobject.draw(canvas);
+        }
+    }
+
+    // add an object to the list eg. want a new player
+    public void addObject(GameObject object){
+        this.gameObjects.add(object);
+    }
+
+    // remove object from list eg. When enemy dies
+    public void removeObject(GameObject object){
+        this.gameObjects.remove(object);
+    }
+
 }
