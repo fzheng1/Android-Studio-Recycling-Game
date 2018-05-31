@@ -55,10 +55,17 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         cb = new ConveyorBelt(BitmapFactory.decodeResource(getResources(), R.drawable.conveyer_belt));
         cb.setVector(-10);
 
-        recyclingBin = new RecyclingBin(0, 750, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
-        trashBin = new TrashBin(0, 1050, ID.trashBin, BitmapFactory.decodeResource(getResources(), R.drawable.trash_bin));
-        compostBin = new CompostBin(250, 750, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
-        paperBin = new PaperBin(500, 750, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
+//        // Horizontal
+//        recyclingBin = new RecyclingBin(200, 900, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
+//        trashBin = new TrashBin(0, 900, ID.trashBin, BitmapFactory.decodeResource(getResources(), R.drawable.trash_bin));
+//        compostBin = new CompostBin(450, 900, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
+//        paperBin = new PaperBin(700, 900, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
+
+        // square
+        recyclingBin = new RecyclingBin(280, 900, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
+        trashBin = new TrashBin(60, 900, ID.trashBin, BitmapFactory.decodeResource(getResources(), R.drawable.trash_bin));
+        compostBin = new CompostBin(50, 650, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
+        paperBin = new PaperBin(280, 650, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
 
 //        for (int i = 0; i < 5; i++) {
 //            int rand = random.nextInt(6);
