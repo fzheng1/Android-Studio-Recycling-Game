@@ -23,7 +23,7 @@ public class Recyclable extends GameObject {
     public void update() {
         x += velX;
         if (x < -com.strobertchs.enviro_game.GamePanel.WIDTH){
-             // TODO remove the object
+            // TODO remove the object
         }
     }
 

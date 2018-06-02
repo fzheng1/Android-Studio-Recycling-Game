@@ -113,6 +113,15 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         // update game objects
         handler.update();
 
+        // remove the object from handler if it goes off screen
+        for (int i = 0; i < handler.gameObjects.size(); i++) {
+            GameObject tempObject = handler.gameObjects.get(i);
+            if (tempObject.getX() < -com.strobertchs.enviro_game.GamePanel.WIDTH){
+                handler.removeObject(tempObject);
+                // TODO Condition if object is lost
+            }
+        }
+
     }
 
     @SuppressLint("MissingSuperCall")
