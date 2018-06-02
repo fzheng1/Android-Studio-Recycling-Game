@@ -63,10 +63,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 //        paperBin = new PaperBin(700, 900, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
 
         // square
-        recyclingBin = new RecyclingBin(280, 900, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
-        trashBin = new TrashBin(60, 900, ID.trashBin, BitmapFactory.decodeResource(getResources(), R.drawable.trash_bin));
-        compostBin = new CompostBin(50, 650, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
-        paperBin = new PaperBin(280, 650, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
+        recyclingBin = new RecyclingBin(590, 750, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
+        trashBin = new TrashBin(330, 750, ID.trashBin, BitmapFactory.decodeResource(getResources(), R.drawable.trash_bin));
+        compostBin = new CompostBin(320, 500, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
+        paperBin = new PaperBin(590, 500, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
 
 
         handler.addObject(recyclingBin);

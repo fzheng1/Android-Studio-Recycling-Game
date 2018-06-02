@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/INSTRUCTIONS"
-        android:layout_width="278dp"
-        android:layout_height="423dp"
-        android:text="PUT INSTRUCTIONS HERE"
+        android:layout_width="315dp"
+        android:layout_height="510dp"
+        android:text="Hello Eco-Hero! You have been assigned the daunting task of correctly sorting the factory's waste items into their proper bins. By dragging the items into their correct disposal bin, not only will you reduce the impacts of waste accumulation, but also stay in the game that much longer! Sort fast and accuretly before you run out of life! Good luck Eco-Hero, we knew we could count on you!"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="48dp" />
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="46dp" />
 </android.support.constraint.ConstraintLayout>
