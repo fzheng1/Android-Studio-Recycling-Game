@@ -25,7 +25,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     // initialize handler so objects can be created
     private Handler handler = new Handler();
 
-
+    //
     private MainThread thread;
     private ConveyorBelt cb;
     private Background bg;
@@ -43,6 +43,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         // add callback to surfaceholder to intercept events
         getHolder().addCallback(this);
 
+        // start the thread
         thread = new MainThread(getHolder(), this);
 
         // make the game panel interactable

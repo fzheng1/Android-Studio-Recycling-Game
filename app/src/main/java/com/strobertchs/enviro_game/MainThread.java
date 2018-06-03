@@ -3,6 +3,8 @@ package com.strobertchs.enviro_game;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
+// this class is the thread on which the game is run
+// sets up game clock
 public class MainThread extends Thread
 {
     // sets the frames/second
@@ -24,6 +26,7 @@ public class MainThread extends Thread
 
     }
 
+    // game loop
     @Override
     public void run()
     {
@@ -34,7 +37,7 @@ public class MainThread extends Thread
         int frameCount =0;
         long targetTime = 1000/FPS;
 
-        // game loop
+        // what the game does while running
         while(running) {
             startTime = System.nanoTime();
             canvas = null;
@@ -43,31 +46,44 @@ public class MainThread extends Thread
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
+                    // update the objects
                     this.gamePanel.update();
+                    // redraw the objects
                     this.gamePanel.draw(canvas);
                 }
             } catch (Exception e) {
             }
-            // if there is a canvas draw on it
+
+            // check if there is a canvas to draw on
             finally{
                 if(canvas!=null)
                 {
                     try {
+                        // displays old contents before update and then removes them
                         surfaceHolder.unlockCanvasAndPost(canvas);
                     }
                     catch(Exception e){e.printStackTrace();}
                 }
             }
 
+            // time passed in milliseconds
             timeMillis = (System.nanoTime() - startTime) / 1000000;
+
+            // difference between target time for a loop and actual time passed for this loop
             waitTime = targetTime-timeMillis;
 
+            // make game wait until target time is reached
             try{
                 this.sleep(waitTime);
             }catch(Exception e){}
 
+            // calculate time elapsed for the loop
             totalTime += System.nanoTime()-startTime;
+
+            // each update makes a new frame
             frameCount++;
+
+            // print out the avg framecount
             if(frameCount == FPS)
             {
                 averageFPS = 1000/((totalTime/frameCount)/1000000);
