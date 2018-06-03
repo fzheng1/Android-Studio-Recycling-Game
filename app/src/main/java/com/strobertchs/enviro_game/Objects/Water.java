@@ -9,7 +9,6 @@ import static com.strobertchs.enviro_game.MainThread.canvas;
 public class Water extends GameObject {
 
     private Bitmap image;
-    private int x, y, dx;
 
     public Water(int x, int y, ID id, Bitmap res){
         super(x, y, id);
@@ -17,17 +16,13 @@ public class Water extends GameObject {
     }
 
     public void update(){
-        x += dx;
-        if (x < -com.strobertchs.enviro_game.GamePanel.WIDTH){
-            x = 0;
-        }
+        x += velX;
+
     }
 
     public void draw(Canvas canvas){
-        canvas.drawBitmap(image, x, 1150, null);
-        if(x < 0){
-            canvas.drawBitmap(image, x+ com.strobertchs.enviro_game.GamePanel.WIDTH, 1150, null);
-        }
+        canvas.drawBitmap(image, x, y, null);
+
     }
 
 //    public void setVector(int vector){
@@ -54,11 +49,12 @@ public class Water extends GameObject {
 
     @Override
     public Rectangle getBounds() {
-        this.rectangle.setBounds(x, y, 200, 200);
+        this.rectangle.setBounds(x, y, 50, 100);
         return this.rectangle;
     }
 
     public void setVector(int vector){
-        this.dx = vector;
+        this.velX = vector;
     }
+
 }

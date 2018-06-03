@@ -63,11 +63,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background));
         cb = new ConveyorBelt(BitmapFactory.decodeResource(getResources(), R.drawable.conveyer_belt));
-        cb.setVector(-10);
-        wb = new Water(10, 10, null, BitmapFactory.decodeResource(getResources(), R.drawable.water));
-        wb.setVector(-10);
-
-
+        cb.setVector(MOVESPEED);
 
 //        // Horizontal
 //        recyclingBin = new RecyclingBin(200, 900, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
@@ -75,17 +71,26 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 //        compostBin = new CompostBin(450, 900, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
 //        paperBin = new PaperBin(700, 900, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
 
-        // square
+//         square
         recyclingBin = new RecyclingBin(590, 750, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
         trashBin = new TrashBin(330, 750, ID.trashBin, BitmapFactory.decodeResource(getResources(), R.drawable.trash_bin));
         compostBin = new CompostBin(320, 500, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
         paperBin = new PaperBin(590, 500, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
 
-
+        // add objects to handler
         handler.addObject(recyclingBin);
         handler.addObject(trashBin);
         handler.addObject(compostBin);
         handler.addObject(paperBin);
+
+
+
+        // Initialize interactable objects under here
+        // water bottle
+        wb = new Water(WIDTH, 1150, null, BitmapFactory.decodeResource(getResources(), R.drawable.water));
+        wb.setVector(MOVESPEED);
+
+        handler.addObject(wb);
 
 
 //        for (int i = 0; i < 5; i++) {
@@ -122,20 +127,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     public void update(){
         cb.update();
-        wb.update();
 
         // update game objects
         handler.update();
+    }
 
-        // remove the object from handler if it goes off screen
-        for (int i = 0; i < handler.gameObjects.size(); i++) {
-            GameObject tempObject = handler.gameObjects.get(i);
-            if (tempObject.getX() < -com.strobertchs.enviro_game.GamePanel.WIDTH){
-                handler.removeObject(tempObject);
-                // TODO Condition if object is lost
-            }
-        }
-
+    public void remove(){
+        handler.remove();
     }
 
     @SuppressLint("MissingSuperCall")
@@ -150,9 +148,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
             bg.draw(canvas);
             cb.draw(canvas);
 
-
             // draw the game objects
-            wb.draw(canvas);
             handler.draw(canvas);
 
             canvas.restoreToCount(savedState);

@@ -46,6 +46,7 @@ public class MainThread extends Thread
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
+                    this.gamePanel.remove();
                     // update the objects
                     this.gamePanel.update();
                     // redraw the objects
