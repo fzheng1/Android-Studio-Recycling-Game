@@ -13,12 +13,18 @@ import com.strobertchs.enviro_game.Objects.*;
 
 import java.util.Random;
 
-
+// creates area where game is run and
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
+    // size of surface game is run on
     public static final int WIDTH = 1499;
     public static final int HEIGHT = 67;
+
+    // speed objects move at
     public static final int MOVESPEED = -5;
+
+    // initialize handler so objects can be created
     private Handler handler = new Handler();
+
 
     private MainThread thread;
     private ConveyorBelt cb;
@@ -29,6 +35,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     private TrashBin trashBin;
     private Recyclable recyclable;
     private Random random;
+
 
     public GamePanel(Context context){
         super(context);
