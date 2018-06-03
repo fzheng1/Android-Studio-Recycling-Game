@@ -33,7 +33,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     private CompostBin compostBin;
     private PaperBin paperBin;
     private TrashBin trashBin;
-    private Recyclable recyclable;
+    private Water recyclable;
+    private Water wb;
     private Random random;
 
 
@@ -63,6 +64,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background));
         cb = new ConveyorBelt(BitmapFactory.decodeResource(getResources(), R.drawable.conveyer_belt));
         cb.setVector(-10);
+        wb = new Water(10, 10, null, BitmapFactory.decodeResource(getResources(), R.drawable.water));
+        wb.setVector(-10);
+
+
 
 //        // Horizontal
 //        recyclingBin = new RecyclingBin(200, 900, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
@@ -117,6 +122,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     public void update(){
         cb.update();
+        wb.update();
 
         // update game objects
         handler.update();
@@ -144,7 +150,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
             bg.draw(canvas);
             cb.draw(canvas);
 
+
             // draw the game objects
+            wb.draw(canvas);
             handler.draw(canvas);
 
             canvas.restoreToCount(savedState);
