@@ -20,7 +20,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     public static final int HEIGHT = 67;
 
     // speed objects move at
-    public static final int MOVESPEED = -5;
+    public static final int MOVESPEED = -10;
 
     // initialize handler so objects can be created
     private Handler handler = new Handler();
@@ -36,7 +36,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     private Water recyclable;
     private Water wb;
     private Juice jb;
-    private Random random;
+    private Random random = new Random();
+
 
 
     public GamePanel(Context context){
@@ -52,6 +53,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         setFocusable(true);
 
     }
+
+
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height){
@@ -84,25 +87,25 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         handler.addObject(compostBin);
         handler.addObject(paperBin);
 
-
-
-        // Initialize interactable objects under here
-        // water bottle
         wb = new Water(WIDTH, 1150, null, BitmapFactory.decodeResource(getResources(), R.drawable.water));
         wb.setVector(MOVESPEED);
 
         handler.addObject(wb);
 
-        //juice box
-        jb = new Juice(WIDTH + 500, 1150, null, BitmapFactory.decodeResource(getResources(), R.drawable.juice));
-        jb.setVector(MOVESPEED);
-
-        handler.addObject(jb);
-
-
-//        for (int i = 0; i < 5; i++) {
-//            int rand = random.nextInt(6);
+//        for (int i = 0; i < 10; i++) {
+//            if (random.nextInt(2) == 0){
+//                wb = new Water(WIDTH + 500*i, 1150, null, BitmapFactory.decodeResource(getResources(), R.drawable.water));
+//                wb.setVector(MOVESPEED);
 //
+//                handler.addObject(wb);
+//            }
+//            else if (random.nextInt(2) == 1){
+//                //juice box
+//                jb = new Juice(WIDTH + 500*i, 1150, null, BitmapFactory.decodeResource(getResources(), R.drawable.juice));
+//                jb.setVector(MOVESPEED);
+//
+//                handler.addObject(jb);
+//            }
 //        }
 
         //safely start game loop
@@ -129,7 +132,33 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event){return super.onTouchEvent(event);}
+    public boolean onTouchEvent(MotionEvent event) {
+
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN: {
+
+                wb.setVelX(0);
+            }
+            break;
+
+            case MotionEvent.ACTION_MOVE: {
+                wb.setX((int) event.getX());
+                wb.setY((int) event.getY());
+
+                invalidate();
+            }
+            break;
+            case MotionEvent.ACTION_UP:{
+                wb.setX((int) event.getX());
+                wb.setY(1150);
+                wb.setVelX(MOVESPEED);
+
+                invalidate();
+            }
+            break;
+        }
+        return true;
+    }
 
 
     public void update(){
@@ -137,6 +166,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
         // update game objects
         handler.update();
+
     }
 
     public void remove(){
@@ -155,14 +185,19 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
             bg.draw(canvas);
             cb.draw(canvas);
 
-            // draw the game objects
+//            // draw the game objects
             handler.draw(canvas);
+
 
             canvas.restoreToCount(savedState);
         }
 
     }
 
+    public void render(Canvas canvas){
+
+
+    }
 
 
 }

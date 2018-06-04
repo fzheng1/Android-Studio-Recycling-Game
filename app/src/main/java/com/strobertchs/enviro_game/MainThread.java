@@ -1,6 +1,7 @@
 package com.strobertchs.enviro_game;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.SurfaceHolder;
 
 // this class is the thread on which the game is run
@@ -17,6 +18,7 @@ public class MainThread extends Thread
     private GamePanel gamePanel;
     private boolean running;
     public static Canvas canvas;
+    private Handler handler;
 
     public MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel)
     {
@@ -36,9 +38,11 @@ public class MainThread extends Thread
         long totalTime = 0;
         int frameCount =0;
         long targetTime = 1000/FPS;
+        int loops = 0;
 
         // what the game does while running
         while(running) {
+
             startTime = System.nanoTime();
             canvas = null;
 
@@ -49,8 +53,15 @@ public class MainThread extends Thread
                     this.gamePanel.remove();
                     // update the objects
                     this.gamePanel.update();
-                    // redraw the objects
+
                     this.gamePanel.draw(canvas);
+
+//                    if (loops%30 == 0){
+//                        // redraw the objects
+//                        this.gamePanel.draw(canvas);
+//                    }
+
+
                 }
             } catch (Exception e) {
             }
@@ -92,10 +103,16 @@ public class MainThread extends Thread
                 totalTime = 0;
                 System.out.println(averageFPS);
             }
+            loops++;
         }
     }
     public void setRunning(boolean b)
     {
         running = b;
+    }
+
+    private void render(){
+
+
     }
 }

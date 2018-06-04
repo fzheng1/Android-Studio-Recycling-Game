@@ -46,12 +46,6 @@ public class Handler {
         this.gameObjects.remove(object);
     }
 
-    public void removeObjectOffScreen(){
-        for (GameObject tempobject: gameObjects) {
-            if(tempobject.getX() < 100){
-                gameObjects.remove(tempobject);
-            }
-        }
-    }
+
 
 }
