@@ -35,6 +35,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     private TrashBin trashBin;
     private Water recyclable;
     private Water wb;
+    private Juice jb;
     private Random random;
 
 
@@ -91,6 +92,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         wb.setVector(MOVESPEED);
 
         handler.addObject(wb);
+
+        //juice box
+        jb = new Juice(WIDTH + 500, 1150, null, BitmapFactory.decodeResource(getResources(), R.drawable.juice));
+        jb.setVector(MOVESPEED);
+
+        handler.addObject(jb);
 
 
 //        for (int i = 0; i < 5; i++) {
