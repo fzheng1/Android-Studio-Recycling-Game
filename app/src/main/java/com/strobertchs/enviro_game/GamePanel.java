@@ -133,29 +133,30 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (handler.gameObjects.size() > 4) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN: {
 
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN: {
+                    handler.gameObjects.get(4).setVelX(0);
+                }
+                break;
 
-                wb.setVelX(0);
+                case MotionEvent.ACTION_MOVE: {
+                    handler.gameObjects.get(4).setX((int) event.getX());
+                    handler.gameObjects.get(4).setY((int) event.getY());
+
+                    invalidate();
+                }
+                break;
+                case MotionEvent.ACTION_UP: {
+                    handler.gameObjects.get(4).setX((int) event.getX());
+                    handler.gameObjects.get(4).setY(1150);
+                    handler.gameObjects.get(4).setVelX(MOVESPEED);
+
+                    invalidate();
+                }
+                break;
             }
-            break;
-
-            case MotionEvent.ACTION_MOVE: {
-                wb.setX((int) event.getX());
-                wb.setY((int) event.getY());
-
-                invalidate();
-            }
-            break;
-            case MotionEvent.ACTION_UP:{
-                wb.setX((int) event.getX());
-                wb.setY(1150);
-                wb.setVelX(MOVESPEED);
-
-                invalidate();
-            }
-            break;
         }
         return true;
     }
