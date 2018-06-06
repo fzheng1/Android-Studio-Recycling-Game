@@ -12,9 +12,10 @@ public class Styrofoam extends GameObject{
 
     private Bitmap image;
 
-    public Styrofoam(int x, int y, ID id, Bitmap res){
+    public Styrofoam(int x, int y, int velX, ID id, Bitmap res){
         super(x, y, id);
         image = res;
+        this.velX = velX;
     }
 
     public void update(){
@@ -30,12 +31,6 @@ public class Styrofoam extends GameObject{
         image.recycle();
     }
 
-
-    @Override
-    public Rectangle getBounds() {
-        this.rectangle.setBounds(x, y, 50, 100);
-        return this.rectangle;
-    }
 
     public void setVector(int vector){
         this.velX = vector;

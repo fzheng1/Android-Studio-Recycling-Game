@@ -43,7 +43,7 @@ public class Handler {
                 gameObjects.remove(tempObject);
             }
             //trash and trash bin collision
-            if (xLoc > 330 && yLoc > 750 && xLoc < 530 && yLoc < 950 && id == ID.trashBin){
+            if (xLoc > 330 && yLoc > 750 && xLoc < 530 && yLoc < 950 && id == ID.garbage){
                 gameObjects.remove(tempObject);
             }
             //compost and compost bin collision

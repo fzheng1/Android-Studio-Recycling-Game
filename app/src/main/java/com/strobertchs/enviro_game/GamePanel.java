@@ -33,9 +33,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     private CompostBin compostBin;
     private PaperBin paperBin;
     private TrashBin trashBin;
-    private Water recyclable;
-    private Water wb;
-    private Juice jb;
     private Random random = new Random();
 
 
@@ -87,26 +84,29 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         handler.addObject(compostBin);
         handler.addObject(paperBin);
 
-        wb = new Water(WIDTH, 1150, ID.recyclable, BitmapFactory.decodeResource(getResources(), R.drawable.water));
-        wb.setVector(MOVESPEED);
 
-        handler.addObject(wb);
 
-//        for (int i = 0; i < 10; i++) {
-//            if (random.nextInt(2) == 0){
-//                wb = new Water(WIDTH + 500*i, 1150, null, BitmapFactory.decodeResource(getResources(), R.drawable.water));
-//                wb.setVector(MOVESPEED);
-//
-//                handler.addObject(wb);
-//            }
-//            else if (random.nextInt(2) == 1){
-//                //juice box
-//                jb = new Juice(WIDTH + 500*i, 1150, null, BitmapFactory.decodeResource(getResources(), R.drawable.juice));
-//                jb.setVector(MOVESPEED);
-//
-//                handler.addObject(jb);
-//            }
-//        }
+        for (int i = 0; i < 10; i++) {
+            int rnd = random.nextInt(5);
+            if (rnd == 0){
+                // water
+                handler.addObject(new Water(WIDTH + 500 * i, 1150, MOVESPEED, ID.recyclable, BitmapFactory.decodeResource(getResources(), R.drawable.water)));
+
+            }
+            else if (rnd == 1){
+                //juice box
+                handler.addObject( new Juice(WIDTH + 500 * i, 1150, MOVESPEED, ID.recyclable, BitmapFactory.decodeResource(getResources(), R.drawable.juice)));
+            }
+            else if (rnd == 2){
+                handler.addObject( new Apple(WIDTH + 500 * i, 1150, MOVESPEED, ID.compost, BitmapFactory.decodeResource(getResources(), R.drawable.apple)));
+            }
+            else if (rnd == 3){
+                handler.addObject( new Box(WIDTH + 500 * i, 1150, MOVESPEED, ID.paper, BitmapFactory.decodeResource(getResources(), R.drawable.box)));
+            }
+            else if (rnd == 4){
+                handler.addObject( new Styrofoam(WIDTH + 500 * i, 1150, MOVESPEED, ID.garbage, BitmapFactory.decodeResource(getResources(), R.drawable.styrofoam)));
+            }
+        }
 
         //safely start game loop
         thread.setRunning(true);

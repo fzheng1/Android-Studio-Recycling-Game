@@ -7,12 +7,13 @@ import android.graphics.Rect;
 public class Juice extends GameObject {
 
     private Bitmap image;
-    private Rect rect;
+//    private Rect rect;
 
-    public Juice(int x, int y, ID id, Bitmap res){
+    public Juice(int x, int y, int velX, ID id, Bitmap res){
         super(x, y, id);
         image = res;
-        rect = new Rect(x, y, x+50, y+150);
+        this.velX = velX;
+//        rect = new Rect(x, y, x+50, y+150);
     }
 
     public void update(){

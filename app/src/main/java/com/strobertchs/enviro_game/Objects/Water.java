@@ -9,9 +9,10 @@ public class Water extends GameObject {
     private Bitmap image;
 //    private Rect rect;
 
-    public Water(int x, int y, ID id, Bitmap res){
+    public Water(int x, int y, int velX, ID id, Bitmap res){
         super(x, y, id);
         image = res;
+        this.velX = velX;
 //        rect = new Rect(x, y, x+50, y+150);
     }
 
