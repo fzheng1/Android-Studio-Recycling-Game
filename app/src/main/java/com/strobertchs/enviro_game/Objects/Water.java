@@ -2,19 +2,17 @@ package com.strobertchs.enviro_game.Objects;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.support.constraint.solver.widgets.Rectangle;
-import android.view.MotionEvent;
-
-import com.strobertchs.enviro_game.Handler;
-import static com.strobertchs.enviro_game.MainThread.canvas;
+import android.graphics.Rect;
 
 public class Water extends GameObject {
 
     private Bitmap image;
+//    private Rect rect;
 
     public Water(int x, int y, ID id, Bitmap res){
         super(x, y, id);
         image = res;
+//        rect = new Rect(x, y, x+50, y+150);
     }
 
     public void update(){
@@ -26,16 +24,9 @@ public class Water extends GameObject {
 
     }
 
-    public void dispose(){
-        image.recycle();
-    }
-
-
-    @Override
-    public Rectangle getBounds() {
-        this.rectangle.setBounds(x, y, 50, 100);
-        return this.rectangle;
-    }
+//    public Rect getRect() {
+//        return rect;
+//    }
 
     public void setVector(int vector){
         this.velX = vector;

@@ -87,7 +87,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         handler.addObject(compostBin);
         handler.addObject(paperBin);
 
-        wb = new Water(WIDTH, 1150, null, BitmapFactory.decodeResource(getResources(), R.drawable.water));
+        wb = new Water(WIDTH, 1150, ID.recyclable, BitmapFactory.decodeResource(getResources(), R.drawable.water));
         wb.setVector(MOVESPEED);
 
         handler.addObject(wb);
@@ -172,6 +172,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     public void remove(){
         handler.remove();
+    }
+
+    public void collision(){
+        handler.collision();
     }
 
     @SuppressLint("MissingSuperCall")

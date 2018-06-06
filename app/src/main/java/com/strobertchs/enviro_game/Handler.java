@@ -1,6 +1,8 @@
 package com.strobertchs.enviro_game;
 
 import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.support.constraint.solver.widgets.Rectangle;
 
 import com.strobertchs.enviro_game.Objects.GameObject;
 import com.strobertchs.enviro_game.Objects.ID;
@@ -28,6 +30,32 @@ public class Handler {
                 gameObjects.remove(tempObject);
             }
         }
+    }
+
+    public void collision(){
+        for (GameObject tempObject: gameObjects){
+            ID id = tempObject.getId();
+            int xLoc = tempObject.getX();
+            int yLoc = tempObject.getY();
+
+            //recyclable and recycling bin collision
+            if (xLoc > 590 && yLoc > 750 && xLoc < 790 && yLoc < 950 && id == ID.recyclable){
+                gameObjects.remove(tempObject);
+            }
+            //trash and trash bin collision
+            if (xLoc > 330 && yLoc > 750 && xLoc < 530 && yLoc < 950 && id == ID.trashBin){
+                gameObjects.remove(tempObject);
+            }
+            //compost and compost bin collision
+            if (xLoc > 320 && yLoc > 500 && xLoc < 520 && yLoc < 700 && id == ID.compost){
+                gameObjects.remove(tempObject);
+            }
+            //paper and paper bin collision
+            if (xLoc > 590 && yLoc > 500 && xLoc < 790 && yLoc < 700 && id == ID.paper){
+                gameObjects.remove(tempObject);
+            }
+        }
+
     }
 
     public void draw(Canvas canvas){

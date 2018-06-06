@@ -3,9 +3,6 @@ package com.strobertchs.enviro_game.Objects;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.support.constraint.solver.widgets.Rectangle;
-
-import static com.strobertchs.enviro_game.MainThread.canvas;
 
 public class PaperBin extends GameObject {
     private Bitmap image;
@@ -25,9 +22,4 @@ public class PaperBin extends GameObject {
         canvas.drawBitmap(image, x, y, null);
     }
 
-    @Override
-    public Rectangle getBounds() {
-        this.rectangle.setBounds(x, y, 200, 200);
-        return this.rectangle;
-    }
 }

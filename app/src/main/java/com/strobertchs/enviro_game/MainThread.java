@@ -51,6 +51,8 @@ public class MainThread extends Thread
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
                     this.gamePanel.remove();
+                    this.gamePanel.collision();
+
                     // update the objects
                     this.gamePanel.update();
 

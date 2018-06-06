@@ -2,27 +2,25 @@ package com.strobertchs.enviro_game.Objects;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.support.constraint.solver.widgets.Rectangle;
-import com.strobertchs.enviro_game.Handler;
-import static com.strobertchs.enviro_game.MainThread.canvas;
+import android.graphics.Rect;
 
 public class Juice extends GameObject {
 
     private Bitmap image;
+    private Rect rect;
 
     public Juice(int x, int y, ID id, Bitmap res){
         super(x, y, id);
         image = res;
+        rect = new Rect(x, y, x+50, y+150);
     }
 
     public void update(){
         x += velX;
-
     }
 
     public void draw(Canvas canvas){
         canvas.drawBitmap(image, x, y, null);
-
     }
 
 //    public void setVector(int vector){
@@ -47,11 +45,6 @@ public class Juice extends GameObject {
 //
 //    }
 
-    @Override
-    public Rectangle getBounds() {
-        this.rectangle.setBounds(x, y, 50, 100);
-        return this.rectangle;
-    }
 
     public void setVector(int vector){
         this.velX = vector;
