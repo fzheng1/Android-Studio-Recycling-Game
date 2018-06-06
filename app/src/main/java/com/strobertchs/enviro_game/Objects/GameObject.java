@@ -5,7 +5,7 @@ import android.graphics.Rect;
 
 public abstract class GameObject {
 
-    protected int x, y;
+    protected int x, y, originalPosition;
 
     protected double velX, velY;
 
@@ -13,6 +13,7 @@ public abstract class GameObject {
 
     public GameObject(int x, int y, ID id){
         this.x = x;
+        this.originalPosition = x;
         this.y = y;
         this.id = id;
     }
@@ -67,6 +68,10 @@ public abstract class GameObject {
 
     public void setVelY(int velY) {
         this.velY = velY;
+    }
+
+    public int getOriginalPosition(){
+        return this.originalPosition;
     }
 
 

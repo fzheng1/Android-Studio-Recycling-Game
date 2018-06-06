@@ -149,7 +149,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                 }
                 break;
                 case MotionEvent.ACTION_UP: {
-                    handler.gameObjects.get(4).setX((int) event.getX());
+                    int origin = handler.gameObjects.get(4).getOriginalPosition();
+                    handler.gameObjects.get(4).setX(origin);
                     handler.gameObjects.get(4).setY(1150);
                     handler.gameObjects.get(4).setVelX(MOVESPEED);
 

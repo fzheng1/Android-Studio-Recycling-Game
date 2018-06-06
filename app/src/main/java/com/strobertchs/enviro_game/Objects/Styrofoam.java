@@ -11,15 +11,18 @@ import static com.strobertchs.enviro_game.MainThread.canvas;
 public class Styrofoam extends GameObject{
 
     private Bitmap image;
+//    private int originalPosition;
 
     public Styrofoam(int x, int y, int velX, ID id, Bitmap res){
         super(x, y, id);
         image = res;
         this.velX = velX;
+        originalPosition = x;
     }
 
     public void update(){
         x += velX;
+        originalPosition += velX;
     }
 
     public void draw(Canvas canvas){
@@ -34,6 +37,10 @@ public class Styrofoam extends GameObject{
 
     public void setVector(int vector){
         this.velX = vector;
+    }
+
+    public int getOriginalPosition(){
+        return this.originalPosition;
     }
 
 }

@@ -7,17 +7,20 @@ import android.graphics.Rect;
 public class Water extends GameObject {
 
     private Bitmap image;
+//    private int originalPosition;
 //    private Rect rect;
 
     public Water(int x, int y, int velX, ID id, Bitmap res){
         super(x, y, id);
         image = res;
         this.velX = velX;
+        originalPosition = x;
 //        rect = new Rect(x, y, x+50, y+150);
     }
 
     public void update(){
         x += velX;
+        originalPosition += velX;
     }
 
     public void draw(Canvas canvas){
@@ -32,6 +35,10 @@ public class Water extends GameObject {
     public void setVector(int vector){
         this.velX = vector;
     }
+
+//    public int getOriginalPosition(){
+//        return this.originalPosition;
+//    }
 
 }
 
