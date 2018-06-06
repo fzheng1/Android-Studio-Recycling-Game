@@ -40,9 +40,9 @@ public class Apple extends GameObject{
         this.velX = vector;
     }
 
-    public int getOriginalPosition(){
-        return this.originalPosition;
-    }
+//    public int getOriginalPosition(){
+//        return this.originalPosition;
+//    }
 
 }
 

@@ -53,9 +53,9 @@ public class Juice extends GameObject {
     public void setVector(int vector){
         this.velX = vector;
     }
-
-    public int getOriginalPosition(){
-        return this.originalPosition;
-    }
+//
+//    public int getOriginalPosition(){
+//        return this.originalPosition;
+//    }
 
 }
