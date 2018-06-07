@@ -17,6 +17,8 @@ public class Handler {
     // <E> indicates what the list is storing
     LinkedList<GameObject> gameObjects = new LinkedList<>();
 
+    private boolean collision = false;
+
     // run the tick methods of the gameobjects
     public void update(){
         for (GameObject tempobject: gameObjects) {
@@ -39,20 +41,24 @@ public class Handler {
             int yLoc = tempObject.getY();
 
             //recyclable and recycling bin collision
-            if (xLoc > 590 && yLoc > 750 && xLoc < 790 && yLoc < 950 && id == ID.recyclable){
+            if (xLoc > 675 && yLoc > 830 && xLoc < 875 && yLoc < 1030 && id == ID.recyclable){
                 gameObjects.remove(tempObject);
+                collision = true;
             }
             //trash and trash bin collision
-            if (xLoc > 330 && yLoc > 750 && xLoc < 530 && yLoc < 950 && id == ID.garbage){
+            if (xLoc > 245 && yLoc > 830 && xLoc < 445 && yLoc < 1030 && id == ID.garbage){
                 gameObjects.remove(tempObject);
+                collision = true;
             }
             //compost and compost bin collision
-            if (xLoc > 320 && yLoc > 500 && xLoc < 520 && yLoc < 700 && id == ID.compost){
+            if (xLoc > 235 && yLoc > 370 && xLoc < 435 && yLoc < 570 && id == ID.compost){
                 gameObjects.remove(tempObject);
+                collision = true;
             }
             //paper and paper bin collision
-            if (xLoc > 590 && yLoc > 500 && xLoc < 790 && yLoc < 700 && id == ID.paper){
+            if (xLoc > 675 && yLoc > 370 && xLoc < 875 && yLoc < 570 && id == ID.paper){
                 gameObjects.remove(tempObject);
+                collision = true;
             }
         }
 
@@ -75,5 +81,12 @@ public class Handler {
     }
 
 
+    public boolean isCollision() {
+        return collision;
+    }
+
+    public void setCollision(boolean collision) {
+        this.collision = collision;
+    }
 
 }

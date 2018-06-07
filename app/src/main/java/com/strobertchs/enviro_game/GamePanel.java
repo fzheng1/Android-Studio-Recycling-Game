@@ -20,7 +20,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     public static final int HEIGHT = 67;
 
     // speed objects move at
-    public static final int MOVESPEED = -10;
+    public static int MOVESPEED = -10;
 
     // initialize handler so objects can be created
     private Handler handler = new Handler();
@@ -86,12 +86,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
 
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 30; i++) {
             int rnd = random.nextInt(5);
             if (rnd == 0){
                 // water
                 handler.addObject(new Water(WIDTH + 500 * i, 1150, MOVESPEED, ID.recyclable, BitmapFactory.decodeResource(getResources(), R.drawable.water)));
-
             }
             else if (rnd == 1){
                 //juice box
@@ -173,10 +172,15 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     public void remove(){
         handler.remove();
+
     }
 
     public void collision(){
         handler.collision();
+        if (handler.isCollision()){
+            MOVESPEED --;
+            handler.setCollision(false);
+        }
     }
 
     @SuppressLint("MissingSuperCall")
