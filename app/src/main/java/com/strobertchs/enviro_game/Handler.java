@@ -41,22 +41,22 @@ public class Handler {
             int yLoc = tempObject.getY();
 
             //recyclable and recycling bin collision
-            if (xLoc > 675 && yLoc > 830 && xLoc < 875 && yLoc < 1030 && id == ID.recyclable){
+            if (xLoc > 800 && yLoc > 830 && xLoc < 1000 && yLoc < 1030 && id == ID.recyclable){
                 gameObjects.remove(tempObject);
                 collision = true;
             }
             //trash and trash bin collision
-            if (xLoc > 245 && yLoc > 830 && xLoc < 445 && yLoc < 1030 && id == ID.garbage){
+            if (xLoc > 50 && yLoc > 830 && xLoc < 250 && yLoc < 1030 && id == ID.garbage){
                 gameObjects.remove(tempObject);
                 collision = true;
             }
             //compost and compost bin collision
-            if (xLoc > 235 && yLoc > 370 && xLoc < 435 && yLoc < 570 && id == ID.compost){
+            if (xLoc > 50 && yLoc > 50 && xLoc < 250 && yLoc < 250 && id == ID.compost){
                 gameObjects.remove(tempObject);
                 collision = true;
             }
             //paper and paper bin collision
-            if (xLoc > 675 && yLoc > 370 && xLoc < 875 && yLoc < 570 && id == ID.paper){
+            if (xLoc > 800 && yLoc > 50 && xLoc < 1000 && yLoc < 250 && id == ID.paper){
                 gameObjects.remove(tempObject);
                 collision = true;
             }

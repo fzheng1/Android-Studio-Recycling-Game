@@ -73,10 +73,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 //        paperBin = new PaperBin(700, 900, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
 
 //         square
-        recyclingBin = new RecyclingBin(675, 830, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
-        trashBin = new TrashBin(245, 830, ID.trashBin, BitmapFactory.decodeResource(getResources(), R.drawable.trash_bin));
-        compostBin = new CompostBin(235, 370, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
-        paperBin = new PaperBin(675, 370, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
+        recyclingBin = new RecyclingBin(800, 830, ID.recycleBin, BitmapFactory.decodeResource(getResources(), R.drawable.recycle_bin));
+        trashBin = new TrashBin(50, 830, ID.trashBin, BitmapFactory.decodeResource(getResources(), R.drawable.trash_bin));
+        compostBin = new CompostBin(50, 50, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
+        paperBin = new PaperBin(800, 50, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
 
         // add objects to handler
         handler.addObject(recyclingBin);
@@ -87,7 +87,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
 
         for (int i = 0; i < 30; i++) {
-            int rnd = random.nextInt(5);
+            int rnd = random.nextInt(15);
             if (rnd == 0){
                 // water
                 handler.addObject(new Water(WIDTH + 500 * i, 1150, MOVESPEED, ID.recyclable, BitmapFactory.decodeResource(getResources(), R.drawable.water)));
@@ -100,10 +100,37 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                 handler.addObject( new Apple(WIDTH + 500 * i, 1150, MOVESPEED, ID.compost, BitmapFactory.decodeResource(getResources(), R.drawable.apple)));
             }
             else if (rnd == 3){
-                handler.addObject( new Box(WIDTH + 500 * i, 1150, MOVESPEED, ID.paper, BitmapFactory.decodeResource(getResources(), R.drawable.box)));
+                handler.addObject( new Box(WIDTH + 500 * i, 1150, MOVESPEED, ID.recyclable, BitmapFactory.decodeResource(getResources(), R.drawable.box)));
             }
             else if (rnd == 4){
                 handler.addObject( new Styrofoam(WIDTH + 500 * i, 1150, MOVESPEED, ID.garbage, BitmapFactory.decodeResource(getResources(), R.drawable.styrofoam)));
+            }
+            else if (rnd == 5) {
+                handler.addObject( new OldNotebook(WIDTH + 500 * i, 1150, MOVESPEED, ID.paper, BitmapFactory.decodeResource(getResources(), R.drawable.paper_sheet)));
+            }
+            else if (rnd == 6) {
+                handler.addObject( new CoffeeCup(WIDTH + 500 * i, 1150, MOVESPEED, ID.recyclable, BitmapFactory.decodeResource(getResources(), R.drawable.coffee)));
+            }
+            else if (rnd == 7) {
+                handler.addObject( new NewsPaper(WIDTH + 500 * i, 1150, MOVESPEED, ID.paper, BitmapFactory.decodeResource(getResources(), R.drawable.news_paper)));
+            }
+            else if (rnd == 8) {
+                handler.addObject( new Yogurt(WIDTH + 500 * i, 1150, MOVESPEED, ID.garbage, BitmapFactory.decodeResource(getResources(), R.drawable.yogurt)));
+            }
+            else if (rnd == 9) {
+                handler.addObject( new PopCan(WIDTH + 500 * i, 1150, MOVESPEED, ID.recyclable, BitmapFactory.decodeResource(getResources(), R.drawable.pop)));
+            }
+            else if (rnd == 11) {
+                handler.addObject( new PaperTowel(WIDTH + 500 * i, 1150, MOVESPEED, ID.paper, BitmapFactory.decodeResource(getResources(), R.drawable.paper_towel)));
+            }
+            else if (rnd == 12) {
+                handler.addObject( new CoffeeGrinds(WIDTH + 500 * i, 1150, MOVESPEED, ID.compost, BitmapFactory.decodeResource(getResources(), R.drawable.coffee_grinds)));
+            }
+            else if (rnd == 13) {
+                handler.addObject( new EggShells(WIDTH + 500 * i, 1150, MOVESPEED, ID.compost, BitmapFactory.decodeResource(getResources(), R.drawable.egg)));
+            }
+            else if (rnd == 14) {
+                handler.addObject( new Tissues(WIDTH + 500 * i, 1150, MOVESPEED, ID.garbage, BitmapFactory.decodeResource(getResources(), R.drawable.tissue)));
             }
         }
 
