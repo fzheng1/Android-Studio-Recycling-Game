@@ -25,11 +25,6 @@ public abstract class GameObject {
     // graphics of the object
     public abstract void draw(Canvas canvas);
 
-    // get outline of object's size to test for overlap
-//    public Rect getRect(){
-//        return this.rect;
-//    }
-
     public int getX() {
         return x;
     }

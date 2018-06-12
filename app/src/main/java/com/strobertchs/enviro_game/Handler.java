@@ -87,7 +87,6 @@ public class Handler {
         this.gameObjects.remove(object);
     }
 
-
     public boolean isCollision() {
         return collision;
     }
