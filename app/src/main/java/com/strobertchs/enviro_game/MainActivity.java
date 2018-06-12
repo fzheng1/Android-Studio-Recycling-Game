@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         Button playBtn = (Button) findViewById(R.id.playBtn);
         Button instructionBtn = (Button) findViewById(R.id.instructionBtn);
 
-        // make the play button take user to another screen (Activity 2)
+        // make the play button take user to another screen (Game)
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -25,7 +25,6 @@ public class MainThread extends Thread
         super();
         this.surfaceHolder = surfaceHolder;
         this.gamePanel = gamePanel;
-
     }
 
     // game loop
@@ -66,6 +65,7 @@ public class MainThread extends Thread
 
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
 
             // check if there is a canvas to draw on
@@ -103,7 +103,16 @@ public class MainThread extends Thread
                 averageFPS = 1000/((totalTime/frameCount)/1000000);
                 frameCount =0;
                 totalTime = 0;
-                System.out.println(averageFPS);
+                System.out.println("FPS: " + averageFPS);
+//                if (handler.gameObjects.size() == 4){
+//                    System.out.println("Points earned this run: " + gamePanel.POINTS);
+//                    try {
+//                        this.sleep(1000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    running = false;
+//                }
             }
             loops++;
         }

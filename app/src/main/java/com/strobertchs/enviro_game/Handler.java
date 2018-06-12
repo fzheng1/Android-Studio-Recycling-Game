@@ -15,7 +15,7 @@ public class Handler {
     // where the objects that are created are going to be stored
     //linked list is an expandable array
     // <E> indicates what the list is storing
-    LinkedList<GameObject> gameObjects = new LinkedList<>();
+    public static LinkedList<GameObject> gameObjects = new LinkedList<>();
 
     private boolean collision = false;
 
@@ -26,10 +26,17 @@ public class Handler {
         }
     }
 
+    public void setVelx(int velx){
+        for (GameObject tempObject: gameObjects){
+            tempObject.setVelX(velx);
+        }
+    }
+
     public void remove(){
         for (GameObject tempObject: gameObjects){
             if (tempObject.getX() < -200 && tempObject.getId() != ID.compostBin && tempObject.getId() != ID.recycleBin && tempObject.getId() != ID.paperBin && tempObject.getId() != ID.trashBin){
                 gameObjects.remove(tempObject);
+                GamePanel.MOVESPEED ++;
             }
         }
     }

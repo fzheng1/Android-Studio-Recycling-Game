@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -17,10 +20,13 @@ import java.util.Random;
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     // size of surface game is run on
     public static final int WIDTH = 1499;
-    public static final int HEIGHT = 67;
+//    public static final int HEIGHT = 67;
 
     // speed objects move at
     public static int MOVESPEED = -10;
+
+    // points
+    public static int POINTS = 0;
 
     // initialize handler so objects can be created
     private Handler handler = new Handler();
@@ -86,8 +92,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
 
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 40; i++) {
             int rnd = random.nextInt(15);
+
             if (rnd == 0){
                 // water
                 handler.addObject(new Water(WIDTH + 500 * i, 1150, MOVESPEED, ID.recyclable, BitmapFactory.decodeResource(getResources(), R.drawable.water)));
@@ -191,7 +198,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     public void update(){
         cb.update();
-
         // update game objects
         handler.update();
 
@@ -199,13 +205,19 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     public void remove(){
         handler.remove();
+        handler.setVelx(MOVESPEED);
 
     }
 
     public void collision(){
         handler.collision();
         if (handler.isCollision()){
-            MOVESPEED --;
+            if (MOVESPEED > -20){
+                MOVESPEED --;
+            }
+            handler.setVelx(MOVESPEED);
+
+            POINTS ++;
             handler.setCollision(false);
         }
     }
@@ -213,17 +225,23 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     @SuppressLint("MissingSuperCall")
     @Override
     public void draw(Canvas canvas) {
-        final float scaleFactorX = (float) getWidth()/WIDTH;
-        final float scaleFactorY = (float) getHeight()/HEIGHT;
+//        final float scaleFactorX = (float) getWidth()/WIDTH;
+//        final float scaleFactorY = (float) getHeight()/HEIGHT;
 
         if (canvas != null){
             final int savedState = canvas.save();
 
             bg.draw(canvas);
             cb.draw(canvas);
+            this.drawText(canvas);
 
 //            // draw the game objects
             handler.draw(canvas);
+
+            if (Handler.gameObjects.size() == 4){
+                whiteScreenScore(canvas);
+                thread.interrupt();
+            }
 
 
             canvas.restoreToCount(savedState);
@@ -231,9 +249,24 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     }
 
-    public void render(Canvas canvas){
+    public void drawText(Canvas canvas){
+        Paint paint = new Paint();
+        paint.setColor(Color.GREEN);
+        paint.setTextSize(500);
+        paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        canvas.drawText("" + POINTS, 20, 750, paint);
+    }
 
+    public void whiteScreenScore(Canvas canvas){
+        Paint paintBackground = new Paint();
+        Paint paintText = new Paint();
 
+        paintBackground.setColor(Color.WHITE);
+        canvas.drawPaint(paintBackground);
+        paintText.setColor(Color.BLACK);
+        paintText.setTextSize(100);
+        paintText.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        canvas.drawText("Points: " + POINTS, 20, 750, paintText);
     }
 
 

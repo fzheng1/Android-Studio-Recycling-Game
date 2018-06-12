@@ -16,6 +16,5 @@ public class Game extends AppCompatActivity {
 
         // extends surfaceview, where the game will be played
         setContentView(new GamePanel(this));
-
     }
 }
