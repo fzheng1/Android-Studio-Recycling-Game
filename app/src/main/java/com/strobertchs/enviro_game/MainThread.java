@@ -18,7 +18,6 @@ public class MainThread extends Thread
     private GamePanel gamePanel;
     private boolean running;
     public static Canvas canvas;
-    private Handler handler;
 
     public MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel)
     {
@@ -56,12 +55,6 @@ public class MainThread extends Thread
                     this.gamePanel.update();
 
                     this.gamePanel.draw(canvas);
-
-//                    if (loops%30 == 0){
-//                        // redraw the objects
-//                        this.gamePanel.draw(canvas);
-//                    }
-
 
                 }
             } catch (Exception e) {
@@ -104,26 +97,15 @@ public class MainThread extends Thread
                 frameCount =0;
                 totalTime = 0;
                 System.out.println("FPS: " + averageFPS);
-//                if (handler.gameObjects.size() == 4){
-//                    System.out.println("Points earned this run: " + gamePanel.POINTS);
-//                    try {
-//                        this.sleep(1000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    running = false;
-//                }
             }
             loops++;
         }
     }
+
+    // sets whether the game is running or not
     public void setRunning(boolean b)
     {
         running = b;
     }
 
-    private void render(){
-
-
-    }
 }

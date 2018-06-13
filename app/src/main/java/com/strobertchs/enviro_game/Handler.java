@@ -17,30 +17,35 @@ public class Handler {
     // <E> indicates what the list is storing
     public static LinkedList<GameObject> gameObjects = new LinkedList<>();
 
+
     private boolean collision = false;
 
-    // run the tick methods of the gameobjects
+    // run the update methods of the gameobjects
     public void update(){
         for (GameObject tempobject: gameObjects) {
             tempobject.update();
         }
     }
 
+    // sets the movespeed of every object
     public void setVelx(int velx){
         for (GameObject tempObject: gameObjects){
             tempObject.setVelX(velx);
         }
     }
 
+    // automatically remove the object if it goes off screen
     public void remove(){
         for (GameObject tempObject: gameObjects){
             if (tempObject.getX() < -200 && tempObject.getId() != ID.compostBin && tempObject.getId() != ID.recycleBin && tempObject.getId() != ID.paperBin && tempObject.getId() != ID.trashBin){
                 gameObjects.remove(tempObject);
+                // decrease Movespeed after an object is lost to make game easier
                 GamePanel.MOVESPEED ++;
             }
         }
     }
 
+    // check if the ids for collision line up
     public void collision(){
         for (GameObject tempObject: gameObjects){
             ID id = tempObject.getId();
@@ -68,9 +73,9 @@ public class Handler {
                 collision = true;
             }
         }
-
     }
 
+    // method to draw every game object
     public void draw(Canvas canvas){
         for (GameObject tempobject: gameObjects){
             tempobject.draw(canvas);
@@ -87,10 +92,12 @@ public class Handler {
         this.gameObjects.remove(object);
     }
 
+    // check if a valid collision occured b/w the first item and a bin
     public boolean isCollision() {
         return collision;
     }
 
+    // set collision to false after collision occurs
     public void setCollision(boolean collision) {
         this.collision = collision;
     }

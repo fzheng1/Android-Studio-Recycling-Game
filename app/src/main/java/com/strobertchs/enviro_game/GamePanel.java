@@ -31,18 +31,22 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     // initialize handler so objects can be created
     private Handler handler = new Handler();
 
-    //
     private MainThread thread;
+
+    // background images
     private ConveyorBelt cb;
     private Background bg;
+
+    // objects that only have one instance
     private RecyclingBin recyclingBin;
     private CompostBin compostBin;
     private PaperBin paperBin;
     private TrashBin trashBin;
+
     private Random random = new Random();
 
 
-
+    // constructor Context: where the it is run
     public GamePanel(Context context){
         super(context);
 
@@ -60,10 +64,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height){
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height){}
 
-    }
-
+    // actions when game is initialized
     @Override
     public void surfaceCreated(SurfaceHolder holder){
         // pass image from drawable into background
@@ -78,15 +81,15 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         compostBin = new CompostBin(50, 50, ID.compostBin, BitmapFactory.decodeResource(getResources(), R.drawable.compost_bin));
         paperBin = new PaperBin(800, 50, ID.paperBin, BitmapFactory.decodeResource(getResources(), R.drawable.paper_bin));
 
-        // add objects to handler
+        // add bin objects to handler
         handler.addObject(recyclingBin);
         handler.addObject(trashBin);
         handler.addObject(compostBin);
         handler.addObject(paperBin);
 
 
-
-        for (int i = 0; i < 5; i++) {
+        // add ~50 objects to handler
+        for (int i = 0; i < 50; i++) {
             int rnd = random.nextInt(16);
 
             if (rnd == 0){
@@ -144,7 +147,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
         }
 
-        //safely start game loop
+        //start game loop
         thread.setRunning(true);
         thread.start();
     }
@@ -167,6 +170,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     }
 
+    // wheat happens when user touches screen
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (handler.gameObjects.size() > 4) {
@@ -178,8 +182,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                 break;
 
                 case MotionEvent.ACTION_MOVE: {
-                    handler.gameObjects.get(4).setX((int) event.getX());
-                    handler.gameObjects.get(4).setY((int) event.getY());
+                    handler.gameObjects.get(4).setX((int) event.getX() - 200);
+                    handler.gameObjects.get(4).setY((int) event.getY() - 200);
 
                     invalidate();
                 }
@@ -213,19 +217,24 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     }
 
+    // check if a collision b/w correct objects ahs occurred
     public void collision(){
         handler.collision();
+        // Object's speed increases as player gets more items
         if (handler.isCollision()){
-            if (MOVESPEED > -20){
+            if (MOVESPEED > -100){
                 MOVESPEED --;
             }
             handler.setVelx(MOVESPEED);
             cb.setVector(MOVESPEED);
+
+            // points increase when item is put in correct bin
             POINTS ++;
             handler.setCollision(false);
         }
     }
 
+    // draws the images onto the canvas, which is on the surfaceholder
     @SuppressLint("MissingSuperCall")
     @Override
     public void draw(Canvas canvas) {
@@ -236,24 +245,27 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         if (canvas != null){
             final int savedState = canvas.save();
 
+            // draw background
             bg.draw(canvas);
             cb.draw(canvas);
             this.drawText(canvas);
 
-//            // draw the game objects
+            // draw the game objects
             handler.draw(canvas);
 
+            // endgame screen if no objects left except bins
             if (Handler.gameObjects.size() == 4){
-                whiteScreenScore(canvas);
+                endScreenScore(canvas);
                 thread.interrupt();
+
             }
 
-
-            canvas.restoreToCount(savedState);
+//            canvas.restoreToCount(savedState);
         }
 
     }
 
+    // points display
     public void drawText(Canvas canvas){
         Paint paint = new Paint();
         paint.setColor(Color.GREEN);
@@ -262,7 +274,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         canvas.drawText("" + POINTS, 20, 750, paint);
     }
 
-    public void whiteScreenScore(Canvas canvas){
+    // endgame screen
+    public void endScreenScore(Canvas canvas){
         Paint paintBackground = new Paint();
         Paint paintText = new Paint();
 
