@@ -68,5 +68,15 @@
         android:src="@drawable/apple"
         android:id="@+id/appleLeft"/>
 
+    <ImageView
+        android:id="@+id/title"
+        android:layout_width="292dp"
+        android:layout_height="220dp"
+        android:layout_marginBottom="420dp"
+        android:src="@drawable/eco_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

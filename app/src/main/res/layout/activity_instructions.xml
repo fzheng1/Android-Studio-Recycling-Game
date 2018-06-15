@@ -4,14 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0ca400"
     tools:context=".Instructions">
+
+    <ImageView
+        android:id="@+id/boxDown"
+        android:layout_width="84dp"
+        android:layout_height="71dp"
+        android:layout_marginBottom="36dp"
+        android:src="@drawable/box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/INSTRUCTIONS"
         android:layout_width="315dp"
         android:layout_height="510dp"
-        android:text="Hello Eco-Hero! You have been assigned the daunting task of correctly sorting the factory's waste items into their proper bins. By dragging the items into their correct disposal bin, not only will you reduce the impacts of waste accumulation, but also stay in the game that much longer! Sort fast and accuretly before you run out of life! Good luck Eco-Hero, we knew we could count on you!"
+        android:layout_marginBottom="28dp"
+        android:text="Hello Eco-Hero! You have been assigned the daunting task of correctly sorting the factory's waste items into their proper bins. By dragging the items into their correct disposal bin, not only will you reduce the impacts of waste accumulation, but also earn yourself some sweet points! Sort fast and accuretly before the items run off the conveyor belt! Good luck Eco-Hero, we knew we could count on you!"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="46dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.768"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/appleLeft"
+        android:layout_width="46dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="532dp"
+        android:src="@drawable/apple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/waterUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:src="@drawable/water"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/juiceRight"
+        android:layout_width="63dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="528dp"
+        android:src="@drawable/juice"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
+
