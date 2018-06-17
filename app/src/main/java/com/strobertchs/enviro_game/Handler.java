@@ -53,22 +53,23 @@ public class Handler {
             int yLoc = tempObject.getY();
 
             //recyclable and recycling bin collision
-            if (xLoc > 800 && yLoc > 830 && xLoc < 1000 && yLoc < 1030 && id == ID.recyclable){
+            if (xLoc > gameObjects.get(0).getX() && yLoc > gameObjects.get(0).getY() && xLoc < gameObjects.get(0).getX() + 200 && yLoc < gameObjects.get(0).getY() + 200 && id == ID.recyclable){
                 gameObjects.remove(tempObject);
                 collision = true;
             }
+
             //trash and trash bin collision
-            if (xLoc > 50 && yLoc > 830 && xLoc < 250 && yLoc < 1030 && id == ID.garbage){
+            if (xLoc > gameObjects.get(1).getX() && yLoc > gameObjects.get(1).getY() && xLoc < gameObjects.get(1).getX() + 200 && yLoc < gameObjects.get(1).getY() + 200 && id == ID.garbage){
                 gameObjects.remove(tempObject);
                 collision = true;
             }
             //compost and compost bin collision
-            if (xLoc > 50 && yLoc > 50 && xLoc < 250 && yLoc < 250 && id == ID.compost){
+            if (xLoc > gameObjects.get(2).getX() && yLoc > gameObjects.get(2).getY() && xLoc < gameObjects.get(2).getX() + 200 && yLoc < gameObjects.get(2).getY() + 200 && id == ID.compost){
                 gameObjects.remove(tempObject);
                 collision = true;
             }
             //paper and paper bin collision
-            if (xLoc > 800 && yLoc > 50 && xLoc < 1000 && yLoc < 250 && id == ID.paper){
+            if (xLoc > gameObjects.get(3).getX() && yLoc > gameObjects.get(3).getY() && xLoc < gameObjects.get(3).getX() + 200 && yLoc < gameObjects.get(3).getY() + 200 && id == ID.paper){
                 gameObjects.remove(tempObject);
                 collision = true;
             }

@@ -26,7 +26,7 @@ public abstract class GameObject {
     public abstract void draw(Canvas canvas);
 
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public void setX(int x) {
@@ -34,7 +34,7 @@ public abstract class GameObject {
     }
 
     public int getY() {
-        return y;
+        return this.y;
     }
 
     public void setY(int y) {

@@ -89,7 +89,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
 
         // add ~50 objects to handler
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 20; i++) {
             int rnd = random.nextInt(16);
 
             if (rnd == 0){
@@ -284,10 +284,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         paintText.setColor(Color.BLACK);
         paintText.setTextSize(100);
         paintText.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-        canvas.drawText("Points: " + POINTS + "/40", 280, 780, paintText);
+        canvas.drawText("Points: " + POINTS + "/20", 280, 780, paintText);
         canvas.drawText("Good Effort Eco-Hero!", 50, 880, paintText);
 
     }
-
-
 }
