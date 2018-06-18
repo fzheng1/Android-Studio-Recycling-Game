@@ -18,6 +18,7 @@ import java.util.Random;
 
 // creates area where game is run and
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
+
     // size of surface game is run on
     public static final int WIDTH = 1499;
 //    public static final int HEIGHT = 67;
@@ -88,7 +89,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         handler.addObject(paperBin);
 
 
-        // add ~50 objects to handler
+        // add ~20 objects to handler
         for (int i = 0; i < 20; i++) {
             int rnd = random.nextInt(16);
 
@@ -173,6 +174,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     // wheat happens when user touches screen
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
         if (handler.gameObjects.size() > 4) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN: {
@@ -207,7 +209,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         cb.update();
         // update game objects
         handler.update();
-
     }
 
     public void remove(){
