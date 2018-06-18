@@ -49,8 +49,8 @@ public class Handler {
     public void collision(){
         for (GameObject tempObject: gameObjects){
             ID id = tempObject.getId();
-            int xLoc = tempObject.getX();
-            int yLoc = tempObject.getY();
+            int xLoc = tempObject.getX() + 50;
+            int yLoc = tempObject.getY() + 50;
 
             //recyclable and recycling bin collision
             if (xLoc > gameObjects.get(0).getX() && yLoc > gameObjects.get(0).getY() && xLoc < gameObjects.get(0).getX() + 200 && yLoc < gameObjects.get(0).getY() + 200 && id == ID.recyclable){
