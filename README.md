@@ -1,2 +1,2 @@
-# ICS4U_CPT_2018
+# Android-Studio-Recycling-Game
 Final project for ICS4U Gallo
